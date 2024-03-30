@@ -5,6 +5,7 @@ import './index.css';
 import reportWebVitals from './reportWebVitals';
 import AppWrap from './AppWrap';
 import AppTheme from './AppTheme';
+import AppProducts from './practice/AppProducts';
 
 
 
@@ -13,7 +14,7 @@ import AppTheme from './AppTheme';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <AppTheme/>
+    <AppProducts/>
   </React.StrictMode>
 );
 
