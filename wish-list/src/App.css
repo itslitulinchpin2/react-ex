@@ -13,6 +13,14 @@
   border: 1px solid black;
 }
 
+.sectionDarkmode{
+  width:400px;
+  height: 600px;
+  border: 1px solid black;
+  background-color: gray;
+  color:blue;
+}
+
 .nav button{
   height:50px;
   background-color: transparent;
@@ -42,4 +50,7 @@ button:hover{
 }
 #icon{
   margin-right: 100px;
+}
+.darkMode{
+  background-color: gray;
 }

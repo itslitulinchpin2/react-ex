@@ -11,9 +11,12 @@ function App() {
 
   const [inputValue,setInputValue]=useState('');
   const [menu,setMenu]=useState('all');
+  const [darkmode,setDarkMode]=useState(false);
 
   function modeChange(){
     console.log('change color');
+    setDarkMode((mode)=>!mode);
+
   }
   function showAll(){
     console.log('showAll');
@@ -37,16 +40,25 @@ function App() {
     setTodos([...todos]);
     setInputValue('')
   }
+  
+  function handleKeyDown(e){
+    if(e.key==='Enter'){
+      setInputValue(e.target.value);
+      todos.push({content:inputValue, done:false})
+      setTodos([...todos]);
+      setInputValue('')
+    }
+  }
 
   return (
   <div className="page">
   <nav className="nav">
-    <button onClick={modeChange} id="icon">다크모드</button>
+    <button onClick={modeChange} id="icon">모드변경</button>
     <button onClick={showAll}>All</button>
     <button onClick={showActive}>Active</button>
     <button onClick={showCompleted}>Completed</button>
   </nav>
-  <section className="section">
+  <section className={darkmode ? 'sectionDarkmode' : 'section' }>
     
  
     {
@@ -73,7 +85,7 @@ function App() {
   
   </section>
   <footer className="footer">
-    <textarea  value={inputValue} onChange={handleInputChange} className="textarea" placeholder='add todo'></textarea>
+    <textarea  value={inputValue} onChange={handleInputChange} onKeyDown={handleKeyDown} className="textarea" placeholder='add todo'></textarea>
     <button onClick={addTodo} className="add">add</button>
   </footer>
   </div>

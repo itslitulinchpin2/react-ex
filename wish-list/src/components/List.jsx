@@ -8,6 +8,7 @@ export default function List({content,done,todos,setTodos}) {
     }
     const handleCheckboxChange=()=>{
         setTodos(todos.map(todo=>{
+          
             if(todo.content===content){
                 return {...todo, done:!done};
             }
@@ -16,7 +17,7 @@ export default function List({content,done,todos,setTodos}) {
     }
  
   return (
-    <div className={styles.list} id="list">
+    <div className={done ? styles['list-done'] : styles.list} >
       <input type="checkbox"
             checked={done}
             onChange={handleCheckboxChange}/>

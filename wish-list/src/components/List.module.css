@@ -8,3 +8,14 @@
     position:absolute;
     right:0;
 }
+
+.list-done{
+    margin-top:3px;
+    margin-bottom: 7px;
+    position:relative;
+    text-decoration: line-through;
+}
+
+.darkMode{
+    background-color: gray;
+}
