@@ -10,18 +10,22 @@ function App() {
   ]);
 
   const [inputValue,setInputValue]=useState('');
+  const [menu,setMenu]=useState('all');
 
   function modeChange(){
     console.log('change color');
   }
   function showAll(){
     console.log('showAll');
+    setMenu('all');
   }
   function showActive(){
     console.log('show active');
+    setMenu('active');
   }
   function showCompleted(){
     console.log('show completed');
+    setMenu('completed');
   }
   function handleInputChange(e){
     //console.log(e.target.value);
@@ -43,11 +47,30 @@ function App() {
     <button onClick={showCompleted}>Completed</button>
   </nav>
   <section className="section">
+    
+ 
     {
+    menu==='all'
+    ?
     todos.map((todo)=>{
     return <List key= {todo.content} content={todo.content} done={todo.done} todos={todos} setTodos={setTodos}/>
     })
+    :
+      menu==='active' ? 
+      todos.map((todo)=>{
+        if(todo.done===false){
+        return <List key= {todo.content} content={todo.content} done={todo.done} todos={todos} setTodos={setTodos}/>
+        }
+      })
+      : todos.map((todo)=>{
+        if(todo.done===true){
+          return <List key= {todo.content} content={todo.content} done={todo.done} todos={todos} setTodos={setTodos}/>
+        }
+      })
+   
     }
+    
+  
   </section>
   <footer className="footer">
     <textarea  value={inputValue} onChange={handleInputChange} className="textarea" placeholder='add todo'></textarea>
